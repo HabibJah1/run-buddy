@@ -13,10 +13,18 @@ body {
 /* apply styles to <header>*/
 header {
   padding: 20px 35px 20px 35px;
-  background-color: #39a6b2;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #39a6b2;
+  background-image: url("../images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-position: 80%;
 }
 
 header h1 {
@@ -24,11 +32,12 @@ header h1 {
   font-size: 36px;
   color: #fce138;
   margin: 0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
 }
 
 header a {
   text-decoration: none;
-  color: #fce138
+  color: #fce138;
 }
 
 header nav {
@@ -47,6 +56,14 @@ header nav ul li a {
   margin: 10px 15px;
   font-weight: lighter;
   font-size: 1.55vw;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+}
+
+header nav ul li a:hover {
+  background: #fce138;
+  color: #024e76;
+  border-radius: 15px;
+  text-shadow: none;
 }
 
 footer {
@@ -66,11 +83,11 @@ footer h2 {
 
 footer div {
   line-height: 1.5;
-  text-align: right
+  text-align: right;
 }
 
 footer a {
-  color: #024e76
+  color: #024e76;
 }
 
 section {
@@ -79,6 +96,8 @@ section {
 
 /* Hero Style Start */
 .hero {
+  background-attachment: fixed;
+  background-position: 80%;
   background-image: url(../images/hero-bg1.jpg);
   background-size: cover;
   background-position: center;
@@ -101,13 +120,16 @@ section {
   font-style: italic;
   font-size: 55px;
   color: #fce138;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-form {
-  background-color: #fce138;
+  background-color: rgba(252, 225, 56, 0.8);
   padding: 20px;
   width: 40%;
   margin: 3.5%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
 }
 
 .hero-form h3 {
@@ -128,8 +150,14 @@ section {
   color: #024e76;
   width: 100%;
   margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, .75);
 }
 
+.form-input:focus {
+  background-color: rgba(255, 255, 255, 1);
+  outline: none;
+}
 .hero-form label {
   margin: 0 5px;
 }
@@ -140,8 +168,12 @@ section {
   border: none;
   padding: 10px 20px;
   font-size: 16px;
+  border-radius: 10px;
 }
 
+.hero-form button:hover {
+  background-color: #39a6b2;  
+}
 /* HERO STYLES END */
 
 .intro h2 {
@@ -189,12 +221,21 @@ section {
   margin: 50px auto;
   padding-bottom: 50px;
   width: 80%;
-  border-bottom: 1px solid #39a6b2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
+
+.step:nth-child(even) {
+  border-bottom: 1px solid #39a6b2;
+}
+
+.step:not(:last-child) {
+  border-bottom: 1px solid #39a6b2;
+}
+
+
 .step h3 {
   color: #024e76;
   font-size: 46px;
@@ -216,6 +257,7 @@ section {
 .step-img img {
   max-width: 100%;
 }
+
 .step-text {
   flex: 12;
 }
@@ -226,9 +268,9 @@ section {
 }
 
 .step-text h4 {
-font-size: 26px;
-line-height: 1.5;
-color: #024e76;
+  font-size: 26px;
+  line-height: 1.5;
+  color: #024e76;
 }
 
 .trainer {
@@ -289,7 +331,7 @@ color: #024e76;
   color: #fce138;
 }
 
-.contact-info > * {
+.contact-info>* {
   flex: 1;
   margin: 15px;
 }
@@ -324,7 +366,8 @@ color: #024e76;
   font-style: normal;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
   border: 1px solid #024e76;
   display: block;
   padding: 7px 15px;
@@ -333,6 +376,14 @@ color: #024e76;
   width: 100%;
   margin-bottom: 15px;
   margin-top: 5px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255, 0.75);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background-color: rgba(255,255,255, 1);
+  outline: none;
 }
 
 .contact-form button {
@@ -343,7 +394,14 @@ color: #024e76;
   text-align: center;
   padding: 15px 0;
   font-size: 16px;
+  border-radius: 10px;
 }
+
+.contact-form button:hover {
+  color: #fce138;
+  background: #39a6b2;
+}
+
 .contact-info a {
   color: #fce138;
 }
@@ -351,6 +409,7 @@ color: #024e76;
 .flex-row {
   display: flex;
 }
+
 /* REACH OUT STYLES END */
 
 /*MEDIA QUERIES START*/
@@ -359,6 +418,7 @@ color: #024e76;
   header {
     padding-bottom: 0;
     justify-content: center;
+    position: relative;
   }
 
   header h1 {
@@ -376,15 +436,17 @@ color: #024e76;
     font-size: 20px;
   }
 
-  .hero-cta, .hero-form {
+  .hero-cta,
+  .hero-form {
     width: 100%;
   }
-  
+
   .hero-cta {
     text-align: center;
   }
 
-  footer h2, footer div {
+  footer h2,
+  footer div {
     text-align: center;
     width: 100%;
   }
@@ -392,12 +454,12 @@ color: #024e76;
   .section-title {
     width: 80%;
   }
-  
+
   .trainer {
     flex: 0 70%;
   }
-  
-  .contact-info iframe{
+
+  .contact-info iframe {
     flex: 1 100%;
   }
 }
@@ -407,7 +469,7 @@ color: #024e76;
   section {
     padding: 30px 15px;
   }
-  
+
   .step h3 {
     flex: 1 100%;
     text-align: center;
@@ -427,7 +489,7 @@ color: #024e76;
   }
 
   .step-text {
-    flex: 100%;  
+    flex: 100%;
   }
 }
 
@@ -453,7 +515,7 @@ color: #024e76;
     text-align: center;
   }
 
-  .contact-info > * {
+  .contact-info>* {
     flex: 0 100%;
   }
 
